@@ -3,6 +3,7 @@ import "./App.css";
 import VoiceForm from "./components/VoiceForm/VoiceForm";
 import { Switch, Route, useHistory } from "react-router-dom";
 import Navbar from "./components/UI/Navbar/Navbar";
+import Tutorials from "./components/UI/Tutorials/Tutorials";
 //import { recognition } from "./voicerecognition";
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
           <h1 className="text-center py-5"> This is Home Page </h1>
         </Route>
         <Route exact path="/tutorials">
-          <h1 className="text-center py-5"> This is Tutorials Page </h1>
+        <Tutorials/>
         </Route>
         <Route exact path="/about">
           <h1 className="text-center py-5"> This is About Page </h1>
