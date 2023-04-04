@@ -5,7 +5,7 @@ import './Tutorials.css'
 
 const Tutorials = () => {
   return (
-    <div className="col-md-12 py-2">
+    <div className="col-md-12 py-2 timetable">
       <img src={banner1} alt="banner" className="bannerImg"/>
     </div>
   );
