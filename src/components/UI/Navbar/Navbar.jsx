@@ -17,7 +17,7 @@ const Navbar = () => {
           </li>
           <li className="nav-item">
             <Link to="/tutorials" className="nav-link text-light">
-              Tutorials
+              Time Table
             </Link>
           </li>
           <li className="nav-item">

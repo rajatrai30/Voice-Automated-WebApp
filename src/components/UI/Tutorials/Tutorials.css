@@ -1,4 +1,6 @@
 .bannerImg {
-    display: block;
-    margin: auto;    
+  display: block;
+  margin: auto;
+  height: 65%;
+  width: 65%;
 }
