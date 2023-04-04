@@ -58,7 +58,6 @@ function App() {
       <Switch>
         <Route exact path="/">
           <VoiceForm />
-          <h1 className="text-center py-5"> This is Home Page </h1>
         </Route>
         <Route exact path="/tutorials">
         <Tutorials/>

@@ -118,7 +118,8 @@ class VoiceForm extends Component {
           let currText = formData[activeInput];
           if (currText) {
             currText = currText.replace(
-              `${inputHistory[activeInput][inputHistory[activeInput].length - 1]
+              `${
+                inputHistory[activeInput][inputHistory[activeInput].length - 1]
               } `,
               ""
             );
@@ -144,13 +145,17 @@ class VoiceForm extends Component {
 
       case "next":
         if (activeInput) {
-          const currentIndex = fields.findIndex(each => each.name === activeInput);
-          const nextIndex = currentIndex + 1 < fields.length ? currentIndex + 1 : 0;
+          const currentIndex = fields.findIndex(
+            (each) => each.name === activeInput
+          );
+          const nextIndex =
+            currentIndex + 1 < fields.length ? currentIndex + 1 : 0;
           const nextInputName = fields[nextIndex].name;
           this.setState({ activeInput: nextInputName }, () => {
             this._findRefInput(refs, nextInputName).current.focus();
           });
-        } break;
+        }
+        break;
 
       // process text which doesnt match with any other custom commands
       default: {
@@ -238,22 +243,22 @@ class VoiceForm extends Component {
 
   _RouterHome = () => {
     const { history } = this.props;
-    history.push('/');
+    history.push("/");
   };
 
   _RouterContact = () => {
     const { history } = this.props;
-    history.push('/contact');
+    history.push("/contact");
   };
 
   _RouterTutorials = () => {
     const { history } = this.props;
-    history.push('/tutorials');
+    history.push("/tutorials");
   };
 
   _RouterAbout = () => {
     const { history } = this.props;
-    history.push('/about');
+    history.push("/about");
   };
 
   _focusNextInput = () => {
@@ -265,11 +270,6 @@ class VoiceForm extends Component {
       this._findRefInput(refs, nextInputName).current.focus();
     });
   };
-
-
-
-
-
 
   // Handle input change
   _handleChange = (e) => {
@@ -303,87 +303,88 @@ class VoiceForm extends Component {
       error,
     } = this.state;
     return (
-      <Row>
-        <Col span={24}>
-          <Row>
-            <Col span={8} />
-            <Col span={8} className="content">
-              <div className="align-right">
-                Debug Mode{" "}
-                <Switch
-                  checked={!!debugMode}
-                  checkedChildren="on"
-                  unCheckedChildren="off"
-                  onChange={this._onDebugModeChange}
-                />
-              </div>
-              <h2>Registration Form</h2>
-              {error && (
-                <>
-                  <Alert type="error" message={error} showIcon />
-                  <br />
-                </>
-              )}
+      <div className="VoiceFirm">
+        <Row>
+          <Col span={24}>
+            <Row>
+              <Col span={8} />
+              <Col span={8} className="content">
+                <div className="align-right">
+                  Debug Mode{" "}
+                  <Switch
+                    checked={!!debugMode}
+                    checkedChildren="on"
+                    unCheckedChildren="off"
+                    onChange={this._onDebugModeChange}
+                  />
+                </div>
+                <h2>Registration Form</h2>
+                {error && (
+                  <>
+                    <Alert type="error" message={error} showIcon />
+                    <br />
+                  </>
+                )}
 
-              <Row>
-                <Col span={24}>
-                  <Row>
-                    <Col span={2}>
-                      {!isRecording ? (
-                        <FaMicrophone
-                          className="recordingIcon on"
-                          onClick={() => this._startRecording()}
-                        />
-                      ) : (
-                        <FaMicrophoneSlash
-                          className="recordingIcon off"
-                          onClick={() => this._stopRecording()}
-                        />
-                      )}
-                    </Col>
-                    <Col span={8} />
-                    <Col span={14} className="align-right">
-                      {loading && (
-                        <Spin
-                          indicator={
-                            <FaTruckLoading
-                              type="loading"
-                              style={{ fontSize: 18 }}
-                              spin
-                            />
-                          }
-                        />
-                      )}
-                      {debugMode && recordedString && (
-                        <span className="debug">{recordedString}</span>
-                      )}
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-              <MakeForm
-                fields={fields}
-                formData={formData}
-                refs={refs}
-                _handleChange={this._handleChange}
-                _setActiveInput={this._setActiveInput}
-                _handleSubmit={this._handleSubmit}
-              />
-            </Col>
-            <Col span={8}>
-              <Help />
-            </Col>
-          </Row>
-        </Col>
-        <FormDetailsModal
-          showModal={showModal}
-          formData={formData}
-          fields={fields}
-          _hideModal={this._hideModal}
-        />
-      </Row>
+                <Row>
+                  <Col span={24}>
+                    <Row>
+                      <Col span={2}>
+                        {!isRecording ? (
+                          <FaMicrophone
+                            className="recordingIcon on"
+                            onClick={() => this._startRecording()}
+                          />
+                        ) : (
+                          <FaMicrophoneSlash
+                            className="recordingIcon off"
+                            onClick={() => this._stopRecording()}
+                          />
+                        )}
+                      </Col>
+                      <Col span={8} />
+                      <Col span={14} className="align-right">
+                        {loading && (
+                          <Spin
+                            indicator={
+                              <FaTruckLoading
+                                type="loading"
+                                style={{ fontSize: 18 }}
+                                spin
+                              />
+                            }
+                          />
+                        )}
+                        {debugMode && recordedString && (
+                          <span className="debug">{recordedString}</span>
+                        )}
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <MakeForm
+                  fields={fields}
+                  formData={formData}
+                  refs={refs}
+                  _handleChange={this._handleChange}
+                  _setActiveInput={this._setActiveInput}
+                  _handleSubmit={this._handleSubmit}
+                />
+              </Col>
+              <Col span={8}>
+                <Help />
+              </Col>
+            </Row>
+          </Col>
+          <FormDetailsModal
+            showModal={showModal}
+            formData={formData}
+            fields={fields}
+            _hideModal={this._hideModal}
+          />
+        </Row>
+      </div>
     );
   }
 }
 export default hot(withRouter(VoiceForm));
-

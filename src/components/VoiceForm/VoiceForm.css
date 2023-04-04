@@ -1,135 +1,125 @@
-body {
-    font-family: "Poppins" !important;
-
-    background: -webkit-linear-gradient(to right,
-            #96c93d,
-            #00b09b);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right,
-            #96c93d,
-            #00b09b);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.content {
+  background: #fff;
+  padding: 20px !important;
+  margin: 20px auto !important;
+  border-radius: 4px;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
 }
 
-.content {
-    background: #fff;
-    padding: 20px !important;
-    margin: 20px auto !important;
+.VoiceFirm{
+    background: #3b61d1;
     border-radius: 4px;
     box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
 }
 
 .help {
-    padding: 10px;
-    font-size: 12px !important;
-    background: #fff;
-    margin: 20px auto !important;
-    border-radius: 4px;
-    /* box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); */
+  padding: 10px;
+  font-size: 12px !important;
+  background: #fff;
+  margin: 20px auto !important;
+  border-radius: 4px;
+  /* box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); */
 }
 
 .help table {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .help table td {
-    padding: 5px !important;
+  padding: 5px !important;
 }
 
 .debug {
-    font-weight: bold;
-    padding: 10px;
-    /* background: #fff; */
-    width: 80%;
-    /* border-radius: 4px; */
-    /* margin: 20px auto !important; */
-    /* box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); */
-    color: #0165af;
+  font-weight: bold;
+  padding: 10px;
+  /* background: #fff; */
+  width: 80%;
+  /* border-radius: 4px; */
+  /* margin: 20px auto !important; */
+  /* box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15); */
+  /* color: #0165af; */
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .align-right {
-    text-align: right;
+  text-align: right;
 }
 
 .recordingIcon {
-    /* float: right; */
-    font-size: 20px;
+  /* float: right; */
+  font-size: 20px;
 }
 
 .on {
-    color: #8080ff !important;
+  color: #8080ff !important;
 }
 
 .off {
-    color: #f85e5e !important;
+  color: #f85e5e !important;
 }
 
-body {
-    background-color: #47d1da;
-}
 
 p {
-    color: white;
-    font: 300 4em/150% Impact;
-    text-align: center;
+  color: white;
+  font: 300 4em/150% Impact;
+  text-align: center;
 }
 
 .ant-divider {
-    margin: 5px 0px !important;
+  margin: 5px 0px !important;
 }
 
 .show {
-    visibility: visible;
+  visibility: visible;
 }
 
 .hide {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 #recordingAnimation {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 #recordingAnimation span {
-    display: inline-block !important;
-    background-color: #ccc;
-    border-radius: 50%;
-    width: 5px;
-    height: 5px;
-    margin-right: 7px;
-    animation-name: blink;
-    animation-duration: 0.8s;
-    animation-iteration-count: infinite;
-    animation-fill-mode: both;
+  display: inline-block !important;
+  background-color: #ccc;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  margin-right: 7px;
+  animation-name: blink;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
 }
 
 #recordingAnimation span:nth-child(2) {
-    animation-delay: 0.1s;
+  animation-delay: 0.1s;
 }
 
 #recordingAnimation span:nth-child(3) {
-    animation-delay: 0.2s;
+  animation-delay: 0.2s;
 }
 
 #recordingAnimation span:nth-child(4) {
-    animation-delay: 0.3s;
+  animation-delay: 0.3s;
 }
 
 @keyframes blink {
-    0% {
-        background-color: rgba(195, 205, 213, 0.2);
-    }
+  0% {
+    background-color: rgba(195, 205, 213, 0.2);
+  }
 
-    20% {
-        background-color: rgba(90, 178, 239, 1);
-        transform: scale(1.2);
-    }
+  20% {
+    background-color: rgba(90, 178, 239, 1);
+    transform: scale(1.2);
+  }
 
-    100% {
-        background-color: rgba(195, 205, 213, 0.2);
-    }
+  100% {
+    background-color: rgba(195, 205, 213, 0.2);
+  }
 }
