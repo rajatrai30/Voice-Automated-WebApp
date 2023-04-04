@@ -1,0 +1,53 @@
+{
+    "fields": [
+      {
+        "name": "first_name",
+        "placeholder": "First Name",
+        "type": "input",
+        "triggers": [
+          "first name",
+          "what is your first name"
+        ]
+      },
+      {
+        "name": "last_name",
+        "placeholder": "Last Name",
+        "type": "input",
+        "triggers": [
+          "last name",
+          "what is your last name",
+          "surname"
+        ]
+      },
+      {
+        "name": "email",
+        "placeholder": "Email",
+        "type": "input",
+        "triggers": [
+          "email",
+          "what is your email address"
+        ]
+      },
+      {
+        "name": "company",
+        "placeholder": "Company Name",
+        "type": "input",
+        "triggers": [
+          "company",
+          "what is the name of your company",
+          "employer",
+          "organization"
+        ]
+      },
+      {
+        "name": "job_title",
+        "placeholder": "Job Title",
+        "type": "input",
+        "triggers": [
+          "job",
+          "what is your job title"
+        ]
+      }
+    ]
+  }
+  
