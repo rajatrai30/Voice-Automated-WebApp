@@ -4,6 +4,7 @@ import VoiceForm from "./components/VoiceForm/VoiceForm";
 import { Switch, Route, useHistory } from "react-router-dom";
 import Navbar from "./components/UI/Navbar/Navbar";
 import Tutorials from "./components/UI/Tutorials/Tutorials";
+import Attendance from "./components/UI/Attendance/Attendance";
 //import { recognition } from "./voicerecognition";
 
 function App() {
@@ -60,10 +61,10 @@ function App() {
           <VoiceForm />
         </Route>
         <Route exact path="/tutorials">
-        <Tutorials/>
+          <Tutorials />
         </Route>
-        <Route exact path="/about">
-          <h1 className="text-center py-5"> This is About Page </h1>
+        <Route exact path="/attendance">
+          <Attendance />
         </Route>
         <Route exact path="/contact">
           <h1 className="text-center py-5"> This is Contact Page </h1>
