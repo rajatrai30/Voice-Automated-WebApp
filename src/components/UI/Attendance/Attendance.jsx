@@ -220,7 +220,7 @@ class Attendance extends Component {
                 checked={this.state.division === "B"}
                 onChange={this.handleDivisionChange}
               />
-              <label>TE-A</label>
+              <label>TE-B</label>
             </label>
             <div className="mt-4">
               <select
@@ -288,12 +288,14 @@ class Attendance extends Component {
                     <td>{student.L2 ? "✓" : ""}</td>
                     <td>{student.L3 ? "✓" : ""}</td>
                     <td>{student.L4 ? "✓" : ""}</td>
-                    <td>{student.L1 + student.L2}</td>
+                    <td>{student.L1 + student.L2 + student.L3 + student.L4}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          ) : <h5>Please Select the Respective Division</h5>}
+          ) : (
+            <h5>Please Select the Respective Division</h5>
+          )}
         </div>
       </div>
     );
