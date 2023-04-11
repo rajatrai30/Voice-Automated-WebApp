@@ -203,39 +203,43 @@ class Attendance extends Component {
         <h1 className="text-center py-2">Attendance</h1>
         <div className="Lecture mb-4">
           <div className="DivisionInput">
-            <label>
+            <h5 className="text-center">Attendance</h5>
+            <label className="DivRadio">
               <input
                 type="radio"
                 value="A"
                 checked={this.state.division === "A"}
                 onChange={this.handleDivisionChange}
               />
-              TE A
+              <label>TE-A</label>
             </label>
-            <label>
+            <label className="DivRadio">
               <input
                 type="radio"
                 value="B"
                 checked={this.state.division === "B"}
                 onChange={this.handleDivisionChange}
               />
-              TE B
+              <label>TE-A</label>
             </label>
+            <div className="mt-4">
+              <select
+                value={this.state.selectedLecture}
+                onChange={(e) =>
+                  this.setState({ selectedLecture: e.target.value })
+                }
+              >
+                <option value="">Select a lecture</option>
+                <option value="L1">Lecture 1</option>
+                <option value="L2">Lecture 2</option>
+                <option value="L3">Lecture 3</option>
+                <option value="L4">Lecture 4</option>
+              </select>
+            </div>
           </div>
           <div>
-            {" "}
-            <select
-              value={this.state.selectedLecture}
-              onChange={(e) =>
-                this.setState({ selectedLecture: e.target.value })
-              }
-            >
-              <option value="">Select a lecture</option>
-              <option value="L1">Lecture 1</option>
-              <option value="L2">Lecture 2</option>
-              <option value="L3">Lecture 3</option>
-              <option value="L4">Lecture 4</option>
-            </select>
+            <label>Date & Time</label>
+            <input type="datetime-local" step="1" />
           </div>
         </div>
 
@@ -262,19 +266,19 @@ class Attendance extends Component {
 
         {loading && <p className="text-dark recordString">{recordedString}</p>}
         <div className="AttendanceTable">
-          <table>
-            <thead>
-              <tr>
-                <th>Sr. No.</th>
-                <th>Name</th>
-                <th>L1</th>
-                <th>L2</th>
-                <th>L3</th>
-                <th>L4</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            {attendanceList2.length > 0 && (
+          {attendanceList2.length > 0 ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Sr. No.</th>
+                  <th>Name</th>
+                  <th>L1</th>
+                  <th>L2</th>
+                  <th>L3</th>
+                  <th>L4</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
               <tbody>
                 {attendanceList.map((student, index) => (
                   <tr key={student.name}>
@@ -288,8 +292,8 @@ class Attendance extends Component {
                   </tr>
                 ))}
               </tbody>
-            )}
-          </table>
+            </table>
+          ) : <h5>Please Select the Respective Division</h5>}
         </div>
       </div>
     );
