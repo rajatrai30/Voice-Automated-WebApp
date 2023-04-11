@@ -3,14 +3,132 @@ import { hot } from "react-hot-loader/root";
 import "./Attendance.css";
 
 const students = [
-  { name: "Krishna", present: false },
-  { name: "Rajat", present: false },
-  { name: "Aman", present: false },
-  { name: "Shivam", present: false },
-  { name: "Yash", present: false },
+  {
+    name: "Krishna",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "B",
+    total: 0,
+  },
+
+  {
+    name: "Rajat",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "B",
+    total: 0,
+  },
+  {
+    name: "Aman",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "B",
+    total: 0,
+  },
+  {
+    name: "Shivam",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "B",
+    total: 0,
+  },
+  {
+    name: "Yash",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "B",
+    total: 0,
+  },
+
+  {
+    name: "Bhavesh",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "A",
+    total: 0,
+  },
+
+  {
+    name: "Ramsha",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "A",
+    total: 0,
+  },
+  {
+    name: "Siddhi",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "A",
+    total: 0,
+  },
+  {
+    name: "Akshay",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "A",
+    total: 0,
+  },
+  {
+    name: "Utkarsha",
+    L1: false,
+    L2: false,
+    L3: false,
+    L4: false,
+    division: "A",
+    total: 0,
+  },
 ];
 
 class Attendance extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      division: "",
+      recordedString: null,
+      activeInput: null,
+      isRecording: false,
+      loading: false,
+      forceStopped: false,
+      formData: {},
+      inputHistory: [],
+      refs: [],
+      showModal: false,
+      debugMode: false,
+      error: null,
+      recognition: null,
+      attendanceList: students,
+    };
+  }
+
+  handleDivisionChange = (event) => {
+    const selectedDivision = event.target.value;
+    this.setState({
+      division: selectedDivision,
+      attendanceList: students.filter(
+        (student) => student.division === selectedDivision
+      ),
+    });
+  };
+
   state = {
     recordedString: null,
     activeInput: null,
@@ -58,7 +176,7 @@ class Attendance extends Component {
   };
 
   handleVoiceCommand = () => {
-    const { recordedString, attendanceList } = this.state;
+    const { recordedString, attendanceList, selectedLecture } = this.state;
     console.log("Recorded string:", recordedString);
     const student = attendanceList.find(
       (s) => s.name.trim().toLowerCase() === recordedString.trim().toLowerCase()
@@ -67,17 +185,60 @@ class Attendance extends Component {
     if (student) {
       this.setState({
         attendanceList: attendanceList.map((s) =>
-          s.name === student.name ? { ...s, present: true } : s
+          s.name === student.name ? { ...s, [selectedLecture]: true } : s
         ),
       });
     }
   };
 
   render() {
-    const { attendanceList, isRecording, loading, recordedString } = this.state;
+    const { division, attendanceList, isRecording, loading, recordedString } =
+      this.state;
+    const attendanceList2 = students.filter(
+      (student) => student.division === division
+    );
+
     return (
       <div className="Attendance">
         <h1 className="text-center py-2">Attendance</h1>
+        <div className="Lecture mb-4">
+          <div className="DivisionInput">
+            <label>
+              <input
+                type="radio"
+                value="A"
+                checked={this.state.division === "A"}
+                onChange={this.handleDivisionChange}
+              />
+              TE A
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="B"
+                checked={this.state.division === "B"}
+                onChange={this.handleDivisionChange}
+              />
+              TE B
+            </label>
+          </div>
+          <div>
+            {" "}
+            <select
+              value={this.state.selectedLecture}
+              onChange={(e) =>
+                this.setState({ selectedLecture: e.target.value })
+              }
+            >
+              <option value="">Select a lecture</option>
+              <option value="L1">Lecture 1</option>
+              <option value="L2">Lecture 2</option>
+              <option value="L3">Lecture 3</option>
+              <option value="L4">Lecture 4</option>
+            </select>
+          </div>
+        </div>
+
         <div className="AttendanceVoiceButtons pb-4">
           <button
             onClick={this.handleStartRecording}
@@ -106,18 +267,28 @@ class Attendance extends Component {
               <tr>
                 <th>Sr. No.</th>
                 <th>Name</th>
-                <th>Present</th>
+                <th>L1</th>
+                <th>L2</th>
+                <th>L3</th>
+                <th>L4</th>
+                <th>Total</th>
               </tr>
             </thead>
-            <tbody>
-              {attendanceList.map((student, index) => (
-                <tr key={student.name}>
-                  <td>{index + 1}</td>
-                  <td>{student.name}</td>
-                  <td>{student.present ? "✓" : ""}</td>
-                </tr>
-              ))}
-            </tbody>
+            {attendanceList2.length > 0 && (
+              <tbody>
+                {attendanceList.map((student, index) => (
+                  <tr key={student.name}>
+                    <td>{index + 1}</td>
+                    <td>{student.name}</td>
+                    <td>{student.L1 ? "✓" : ""}</td>
+                    <td>{student.L2 ? "✓" : ""}</td>
+                    <td>{student.L3 ? "✓" : ""}</td>
+                    <td>{student.L4 ? "✓" : ""}</td>
+                    <td>{student.L1 + student.L2}</td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
           </table>
         </div>
       </div>

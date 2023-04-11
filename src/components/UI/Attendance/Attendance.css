@@ -18,6 +18,25 @@
   background-color: #fff;
 }
 
+.Lecture{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  gap: 2rem;
+}
+
+.DivisionInput{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -28,7 +47,7 @@ table {
 th,
 td {
   padding: 10px 15px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #ddd;
 }
 
@@ -43,7 +62,7 @@ td:last-child {
   text-align: center;
 }
 
-td:last-child::before {
+/* td:last-child::before {
   content: "";
   display: inline-block;
   width: 16px;
@@ -51,11 +70,11 @@ td:last-child::before {
   margin-right: 5px;
   background-color: #4caf50;
   border-radius: 50%;
-}
+} */
 
-td:last-child:not(:empty)::before {
+/* td:last-child:not(:empty)::before {
   content: "\2714";
-}
+} */
 
 tr:nth-child(even) {
   background-color: #f9f9f9;
